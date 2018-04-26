@@ -42,7 +42,7 @@ extracted_inliers = cloud_filtered.extract(inliers, negative=True)`
 This code segment will set the max_distance to 0.01 and allow us to keep the points that fit the model.
 
 This is the result of segmenting the points.
-![Extracted Inliers](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+![Extracted Inliers](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/extracted_inliers.png?raw=true)
 
 We end this function by cleaning up any outliers that produce noise in the background.
 
@@ -57,21 +57,21 @@ Next we implement DBSCAN into the code and publish the cloud data to rospy. This
 #### 2. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
 
 I increased the training from 5 to 20 and noticed that the accuracy increased with it.
-![Confusion Matrix](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+![Confusion Matrix](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/confusion_matrix.png?raw=true)
 
 
 ### Pick and Place Setup
 
 Before running the tests for the object recognition I trained my model on the objects in 100 different poses to increase the recognition of the objects.
-![Confusion Matrix Project](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+![Confusion Matrix Project](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/confusion_matrix_project.png?raw=true)
 
 Looking the first output_1.yaml file we see that have correctly detected 3/3 of the objects in the scene
-![World 1](https://user-images.githubusercontent.com/20687560/28748286-9f65680e-7468-11e7-83dc-f1a32380b89c.png)
+![World 1](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/world1.png?raw=true)
 
 Next in output_2.yaml we successfully identify 4/5 objects correctly. We misidentify book as soap.
-![World 2](https://user-images.githubusercontent.com/20687560/28748286-9f65680e-7468-11e7-83dc-f1a32380b89c.png)
+![World 2](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/world2.png?raw=true)
 
 Next in output_3.yaml we successfully identify 7/8 objects correctly. We don't even identify the glue bottle.
-![World 3](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+![World 3](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/world3.png?raw=true)
 
 One thing that I modified with my object recognition was to have it rerun the recognition after it each pick and place action. On the third test world I noticed that it did not find the glue model initially. After several of the objects were removed it recognized the glue but after it had already skipped it in the search. I tried lowering the minimum size for clusters thinking that it may have not recognized it hiding behind something but it resulted in misidentifying other objects. I believe that to increase accuracy that we can train the model on objects that are missing sections or are being blocked.
