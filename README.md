@@ -56,6 +56,9 @@ Next we implement DBSCAN into the code and publish the cloud data to rospy. This
 
 #### 2. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
 
+The code for exercise 3 is in the file template_2.py in the folder code.
+Much of the code is a copy from Exercise 2 the main difference is that we run a prediction on our clusters and guess what object they are. We then publish the labels for RVIZ to display.
+
 I increased the training from 5 to 20 and noticed that the accuracy increased with it.
 ![Confusion Matrix](https://github.com/jakebonk/RoboND-Perception-Project/blob/master/images/confusion_matrix.png?raw=true)
 
